@@ -16,3 +16,13 @@ class StyledText extends StatelessWidget {
     );
   }
 }
+
+class App extends StatelessWidget {
+  final String data;
+  const App(this.data, {super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(height: 200,);
+  }
+}
