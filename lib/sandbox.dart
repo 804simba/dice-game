@@ -122,6 +122,26 @@ class FileHandler {
     return file.readAsString().then((contents) => contents.trim());
   }
 }
+/*
+* By marking a function with [async*] we are able to use the [yield] keyword
+* By marking a function with [async] we are able to use the await keyword
+* */
+
+class CountStream {
+  Stream<int> countStreamHandler (int max) async* {
+    for (int i = 0; i < max; i++) {
+      yield i;
+    }
+  }
+
+  Future<int> sumStream(Stream<int> stream) async {
+    int sum = 0;
+    await for (int value in stream) {
+      sum += value;
+    }
+    return sum;
+  }
+}
 
 void main() {
   final fileHandler = FileHandler.readFileAsync('dummy.txt');
