@@ -26,3 +26,5 @@ class App extends StatelessWidget {
     return Container(height: 200,);
   }
 }
+
+enum PlanetType { terrestrial, gas, ice }
