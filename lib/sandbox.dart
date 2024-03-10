@@ -70,6 +70,7 @@ class Point {
         y = yOrigin;
 }
 
+
 abstract class InvestmentService {
   void handleInvestmentPortfolio(String name);
 }
@@ -78,17 +79,20 @@ class InvestmentServiceImpl extends InvestmentService {
 
   @override
   void handleInvestmentPortfolio(String name) {
-    // do some invest bullshit
+    print('STANDING ON BUSINESS FOR $name, TYPE SHIT!');
   }
 }
+
+final investmentService = InvestmentServiceImpl();
 
 class PortfolioManagementServiceProvider {
   final InvestmentService _investmentService;
 
-  PortfolioManagementServiceProvider(this._investmentService);
+  PortfolioManagementServiceProvider() : _investmentService = investmentService;
 
   void handlePortfolioManagement() {
     print("Handling portfolio for client");
+    _investmentService.handleInvestmentPortfolio('SIMBA');
   }
 }
 
@@ -172,7 +176,6 @@ void main() {
   // records
   var record = ('first', a: 2, b: true, 'last');
 
-  InvestmentService investmentService = InvestmentServiceImpl();
-  PortfolioManagementServiceProvider portfolioManagementServiceProvider = PortfolioManagementServiceProvider(investmentService);
+  PortfolioManagementServiceProvider portfolioManagementServiceProvider = PortfolioManagementServiceProvider();
   portfolioManagementServiceProvider.handlePortfolioManagement();
 }
